@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 """
 Question 2
@@ -28,15 +29,19 @@ samples.  In accompanying visualizations, demonstrate scatter plots of the data 
 along with their inferred (decision) labels.  For each case,  count the number of errors and
 estimate the probability of error based on these counts.
 """
+mu = []
+sigma = []
+samps = 0
 
-def gauss(mu, sigma, samp):
-    vals = randn(length(mu), samp)
+def gauss(mu, sigma, samps):
+     x = (sigma**(1/2)) * np.random.randn(length(mu), samps) + np.matlib.repmat()
+     return x
 
 """
 Question 3
 
-For the datasets you generated in Question 2, implement and apply the Fisher Linear Dis-
-criminant Analysis classifier with the decision threshold for the linear discriminant score set
+For the datasets you generated in Question 2, implement and apply the Fisher Linear Discriminant 
+Analysis classifier with the decision threshold for the linear discriminant score set
 to minimize the smallest probability error you can achieve on the specific data sets generated
 for each case.  Visualize the one-dimensional Fisher LDA discriminant scores and decision
 labels for each sample in separate plots for each case.  Note: We will soon discuss the principle
