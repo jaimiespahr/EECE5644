@@ -29,13 +29,58 @@ samples.  In accompanying visualizations, demonstrate scatter plots of the data 
 along with their inferred (decision) labels.  For each case,  count the number of errors and
 estimate the probability of error based on these counts.
 """
-mu = []
-sigma = []
-samps = 0
 
-def gauss(mu, sigma, samps):
-     x = (sigma**(1/2)) * np.random.randn(length(mu), samps) + np.matlib.repmat()
-     return x
+def gaussClass(mu, sigma, samps, p, n):
+    x0 = []
+    y0 = []
+    x1 = []
+    y1 = []
+    data = []
+    for s in range(samps):
+        c = np.random.rand(1)*100
+        if c <= (p[0]*100):
+            x = np.random.multivariate_normal(mu[0], sigma[0])
+            x0.append(x[0])
+            y0.append(x[1])
+            data.append(x)
+        else:
+            x = np.random.multivariate_normal(mu[1], sigma[1])
+            x1.append(x[0])
+            y1.append(x[1])
+            data.append(x)
+    ax1, ax2 = plt.subplots(2)
+    ax1.scatter(x0, y0, marker='o', color='blue')
+    ax1.scatter(x1, y1, marker='x', color='red')
+    ax1.xlabel('x1')
+    ax1.ylabel('x2')
+    ax1.title('Gaussian class labels for part ' + str(n))
+    ax1.legend(['Class 0', 'Class 1'])
+    plt.show()
+    return
+
+p0 = [0.5, 0.5]
+p1 = [0.05, 0.95]
+
+mu = [[0, 0], [3, 3]]
+sigma = [[[1, 0], [0, 1]], [[1, 0], [0, 1]]]
+samps = 400
+p = p0
+gaussClass(mu, sigma, samps, p, 1)
+p = p1
+gaussClass(mu, sigma, samps, p, 4)
+
+sigma = [[[3, 1], [1, 0.8]], [[3, 1], [1, 0.8]]]
+p = p0
+gaussClass(mu, sigma, samps, p, 2)
+p = p1
+gaussClass(mu, sigma, samps, p, 5)
+
+mu = [[0, 0], [2, 2]]
+sigma = [[[2, 0.5], [0.5, 1]], [[2, 1.9], [1.9, 5]]]
+p = p0
+gaussClass(mu, sigma, samps, p, 3)
+p = p1
+gaussClass(mu, sigma, samps, p, 6)
 
 """
 Question 3
